@@ -29,8 +29,8 @@ message(BUILD_PATH=${BUILD_PATH})
 set(ARCH_OPTION "-mthumb -mcpu=cortex-m7")
 set(CODE_OPTION "-Os -ffunction-sections -fdata-sections -g")
 #####################################################################################################################################
-# set(S_OBJECT_OPTION ${ARCH_OPTION})
-# message(S_OBJECT_OPTION=${S_OBJECT_OPTION})
+#set(S_OBJECT_OPTION ${ARCH_OPTION})
+#message(S_OBJECT_OPTION=${S_OBJECT_OPTION})
 set(C_OBJECT_OPTION "${ARCH_OPTION} ${CODE_OPTION}")
 message(C_OBJECT_OPTION=${C_OBJECT_OPTION})
 set(LINK_OPTION "${ARCH_OPTION} ${CODE_OPTION} -Wl,--gc-sections --specs=nosys.specs -Wl,-Map=map.map")
@@ -56,16 +56,12 @@ aux_source_directory(STM32_USB_Device_Library/Core/Src STM32_USB_Device_Library_
 aux_source_directory(STM32_USB_Device_Library/Class/CDC/Src STM32_USB_Device_Library_Class_CDC_src)
 aux_source_directory(User/Src User_src)
 
-# merge_all_source_files
+#merge_all_source_files
 set(USER    ${STM32F7xx_HAL_Driver_src}
             ${STM32_USB_Device_Library_Core_src}
             ${STM32_USB_Device_Library_Class_CDC_src}
             ${User_src}
         )
-#####################################################################################################################################
-#set(CMAKE_ASM_FLAGS  ${S_OBJECT_OPTION} ${START_NAME_PATH} -o Startup.o)
-#set(CMAKE_C_FLAGS ${C_OBJECT_OPTION} ${STM32F7xx_HAL_Driver_src} ${STM32_USB_Device_Library_Core_src} ${STM32_USB_Device_Library_Class_CDC_src} ${User_src} ${CDEFINE})
-#set(CMAKE_C_FLAGS ${LINK_OPTION} ${CDEFINE} -T${LINK_NAME_PATH} ${BUILD_PATH}*.o -o ${TARGET_NAME}.elf)
 #####################################################################################################################################
 #exe_lists
 #add_executable(STM32CMAKE   ${User_src}
@@ -74,10 +70,17 @@ set(USER    ${STM32F7xx_HAL_Driver_src}
 #                            ${STM32_USB_Device_Library_Class_CDC_src} 
 #                            ${START_NAME_PATH}
 #                            )
-# merge_all_files
-add_executable(STM32CMAKE ${USER} ${START_NAME_PATH} ${LINK_NAME_PATH})   
-execute_process(COMMAND  arm-none-eabi-objcopy -O binary STM32CMAKE cccc.bin)                      
+#merge_all_files
+add_executable(STM32CMAKE ${USER} ${START_NAME_PATH} ${LINK_NAME_PATH}) 
+##################################################################################################################################### 
+#cmake _shell 
+execute_process(COMMAND  arm-none-eabi-objcopy -O binary STM32CMAKE cccc.bin)   
 #####################################################################################################################################
+#set(CMAKE_ASM_FLAGS  ${S_OBJECT_OPTION} ${START_NAME_PATH} -o Startup.o)
+#set(CMAKE_C_FLAGS ${C_OBJECT_OPTION} ${STM32F7xx_HAL_Driver_src} ${STM32_USB_Device_Library_Core_src} ${STM32_USB_Device_Library_Class_CDC_src} ${User_src} ${CDEFINE})
+#set(CMAKE_C_FLAGS ${LINK_OPTION} ${CDEFINE} -T${LINK_NAME_PATH} ${BUILD_PATH}*.o -o ${TARGET_NAME}.elf)
+#####################################################################################################################################
+                
 #all:$(TARGET_NAME).elf $(TARGET_NAME).hex $(TARGET_NAME).bin
 #	mkdir -p Obj
 #	mv $(BUILD_PATH)$(TARGET_NAME).elf $(OBJECT_PATH)

@@ -10,9 +10,36 @@ set(CMAKE_SYSTEM_PROCESSOR arm)
 set(CMAKE_CROSSCOMPILING TRUE)          
 #####################################################################################################################################
 set(CMAKE_C_COMPILER "arm-none-eabi-gcc")
-set(CMAKE_ASM_COMPILER "arm-none-eabi-as")
-set(CMAKE_LINKER "arm-none-eabi-ld")
-set(CMAKE_OBJCOPY "arm-none-eabi-objcopy")
+set(CMAKE_CXX_COMPILER "arm-none-eabi-c++")
+set(CMAKE_STRIP "arm-none-eabi-strip")
+set(CMAKE_ASM_COMPILER "arm-none-eabi-gcc")
+#####################################################################################################################################
+#抑制_CMake_用动态链接来编译、链接
+set(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "")
+set(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS "")
+#####################################################################################################################################
+set(START_NAME_PATH User/Dep/startup_stm32f769xx.s)
+message(START_NAME_PATH=${START_NAME_PATH})
+set(LINK_NAME_PATH User/Dep/STM32F769NIHx_FLASH.ld)
+message(LINK_NAME_PATH=${LINK_NAME_PATH})
+set(CDEFINE -DUSE_USB_FS)
+set(BUILD_PATH Build/)
+message(BUILD_PATH=${BUILD_PATH})
+#####################################################################################################################################
+set(ARCH_OPTION "-mthumb -mcpu=cortex-m7")
+set(CODE_OPTION "-Os -ffunction-sections -fdata-sections -g")
+#####################################################################################################################################
+# set(S_OBJECT_OPTION ${ARCH_OPTION})
+# message(S_OBJECT_OPTION=${S_OBJECT_OPTION})
+set(C_OBJECT_OPTION "${ARCH_OPTION} ${CODE_OPTION}")
+message(C_OBJECT_OPTION=${C_OBJECT_OPTION})
+set(LINK_OPTION "${ARCH_OPTION} ${CODE_OPTION} -Wl,--gc-sections --specs=nosys.specs -Wl,-Map=map.map")
+message(LINK_OPTION=${LINK_OPTION})
+#####################################################################################################################################
+#c/c++编译选项_设置-----------编译
+set(CMAKE_C_FLAGS ${C_OBJECT_OPTION}) #${CDEFINE})
+#c/c++链接选项_设置-----------链接
+set(CMAKE_EXE_LINKER_FLAGS ${LINK_OPTION}) #${CDEFINE} -T${LINK_NAME_PATH})
 #####################################################################################################################################
 #header_files
 include_directories(User/Inc
@@ -36,35 +63,11 @@ set(USER    ${STM32F7xx_HAL_Driver_src}
             ${User_src}
         )
 #####################################################################################################################################
-set(START_NAME_PATH User/Dep/startup_stm32f769xx.s)
-message(START_NAME_PATH=${START_NAME_PATH})
-set(LINK_NAME_PATH User/Dep/STM32F769NIHx_FLASH.ld)
-message(LINK_NAME_PATH=${LINK_NAME_PATH})
-set(CDEFINE -DUSE_USB_FS)
-set(BUILD_PATH Build/)
-message(BUILD_PATH=${BUILD_PATH})
-set(ARM_CORE "cortex-m7")
-set(ARCH_OPTION "-mthumb -mcpu=${ARM_CORE}")
-set(CODE_OPTION "-Os -ffunction-sections -fdata-sections -g")
-set(HEX_OPTION "-O ihex")
-set(BIN_OPTION "-O binary")
-set(S_OBJECT_OPTION "${ARCH_OPTION}")
-message(S_OBJECT_OPTION=${S_OBJECT_OPTION})
-set(C_OBJECT_OPTION "${ARCH_OPTION} ${CODE_OPTION}")
-message(C_OBJECT_OPTION=${C_OBJECT_OPTION})
-set(LINK_OPTION "${ARCH_OPTION} ${CODE_OPTION} -Wl,--gc-sections --specs=nosys.specs -Wl,-Map=map.map")
-message(LINK_OPTION=${LINK_OPTION})
-#####################################################################################################################################
-#set(CMAKE_ASM_FLAGS ${S_OBJECT_OPTION} ${START_NAME_PATH} -o Startup.o)
-set(CMAKE_C_FLAGS ${C_OBJECT_OPTION}) #${CDEFINE})
-set(CMAKE_EXE_LINKER_FLAGS ${LINK_OPTION}) #${CDEFINE} -T${LINK_NAME_PATH})
-#####################################################################################################################################
 #set(CMAKE_ASM_FLAGS  ${S_OBJECT_OPTION} ${START_NAME_PATH} -o Startup.o)
 #set(CMAKE_C_FLAGS ${C_OBJECT_OPTION} ${STM32F7xx_HAL_Driver_src} ${STM32_USB_Device_Library_Core_src} ${STM32_USB_Device_Library_Class_CDC_src} ${User_src} ${CDEFINE})
 #set(CMAKE_C_FLAGS ${LINK_OPTION} ${CDEFINE} -T${LINK_NAME_PATH} ${BUILD_PATH}*.o -o ${TARGET_NAME}.elf)
 #####################################################################################################################################
 #exe_lists
-set(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "")
 #add_executable(STM32CMAKE   ${User_src}
 #                            ${STM32F7xx_HAL_Driver_src} 
 #                            ${STM32_USB_Device_Library_Core_src} 

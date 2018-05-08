@@ -37,7 +37,7 @@ set(LINK_OPTION "${ARCH_OPTION} ${CODE_OPTION} -Wl,--gc-sections --specs=nosys.s
 message(LINK_OPTION=${LINK_OPTION})
 #####################################################################################################################################
 #c/c++编译选项_设置-----------编译
-set(CMAKE_C_FLAGS ${C_OBJECT_OPTION}) #${CDEFINE})
+set(CMAKE_C_FLAGS "${C_OBJECT_OPTION}") #${CDEFINE})
 #c/c++链接选项_设置-----------链接
 set(CMAKE_EXE_LINKER_FLAGS "${LINK_OPTION} -T${LINK_NAME_PATH}") #${CDEFINE} -T${LINK_NAME_PATH})
 #####################################################################################################################################

@@ -1,0 +1,9 @@
+#Run with JLinkExe -Device STM32F765II -speed 4000 -if SWD -autoconnect 1 -CommanderScript ./flash.jlink
+
+loadbin ./Build/cccc.bin 0x8000000
+sleep 100
+verifybin ./Build/cccc.bin 0x8000000
+sleep 100
+r
+g
+exit

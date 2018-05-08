@@ -71,7 +71,7 @@ set(USER    ${STM32F7xx_HAL_Driver_src}
 #                            ${START_NAME_PATH}
 #                            )
 #merge_all_files
-add_executable(STM32CMAKE ${USER} ${START_NAME_PATH} ${LINK_NAME_PATH}) 
+add_executable(STM32CMAKE ${USER} ${START_NAME_PATH}) 
 ##################################################################################################################################### 
 #cmake _shell 
 execute_process(COMMAND  arm-none-eabi-objcopy -O binary STM32CMAKE cccc.bin)   

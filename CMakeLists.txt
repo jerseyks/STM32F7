@@ -20,7 +20,7 @@ set(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS "")
 #####################################################################################################################################
 set(START_NAME_PATH User/Dep/startup_stm32f769xx.s)
 message(START_NAME_PATH=${START_NAME_PATH})
-set(LINK_NAME_PATH User/Dep/STM32F769NIHx_FLASH.ld)
+set(LINK_NAME_PATH /home/zxzhang/CPP/User/Dep/STM32F769NIHx_FLASH.ld)
 message(LINK_NAME_PATH=${LINK_NAME_PATH})
 set(CDEFINE -DUSE_USB_FS)
 set(BUILD_PATH Build/)
@@ -39,7 +39,7 @@ message(LINK_OPTION=${LINK_OPTION})
 #c/c++编译选项_设置-----------编译
 set(CMAKE_C_FLAGS ${C_OBJECT_OPTION}) #${CDEFINE})
 #c/c++链接选项_设置-----------链接
-set(CMAKE_EXE_LINKER_FLAGS ${LINK_OPTION}) #${CDEFINE} -T${LINK_NAME_PATH})
+set(CMAKE_EXE_LINKER_FLAGS "${LINK_OPTION} -T${LINK_NAME_PATH}") #${CDEFINE} -T${LINK_NAME_PATH})
 #####################################################################################################################################
 #header_files
 include_directories(User/Inc

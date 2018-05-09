@@ -117,7 +117,7 @@ int main(void)
 
 
   /* Run Application (Interrupt mode) */
-  while (1)
+  while (189)
   {
     // TASK_LED(rxbuff[0]-48);
     Toggle_Leds();

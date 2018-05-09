@@ -18,6 +18,9 @@ set(CMAKE_ASM_COMPILER "arm-none-eabi-gcc")
 set(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "")
 set(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS "")
 #####################################################################################################################################
+#macro_definition
+add_definitions(-DUSE_USB_FS)
+#####################################################################################################################################
 set(START_NAME_PATH User/Dep/startup_stm32f769xx.s)
 message(START_NAME_PATH=${START_NAME_PATH})
 set(LINK_NAME_PATH /home/zxzhang/CPP/User/Dep/STM32F769NIHx_FLASH.ld)
@@ -80,7 +83,7 @@ execute_process(COMMAND  arm-none-eabi-objcopy -O binary STM32CMAKE cccc.bin)
 #set(CMAKE_C_FLAGS ${C_OBJECT_OPTION} ${STM32F7xx_HAL_Driver_src} ${STM32_USB_Device_Library_Core_src} ${STM32_USB_Device_Library_Class_CDC_src} ${User_src} ${CDEFINE})
 #set(CMAKE_C_FLAGS ${LINK_OPTION} ${CDEFINE} -T${LINK_NAME_PATH} ${BUILD_PATH}*.o -o ${TARGET_NAME}.elf)
 #####################################################################################################################################
-                
+              
 #all:$(TARGET_NAME).elf $(TARGET_NAME).hex $(TARGET_NAME).bin
 #	mkdir -p Obj
 #	mv $(BUILD_PATH)$(TARGET_NAME).elf $(OBJECT_PATH)

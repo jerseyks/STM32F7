@@ -47,6 +47,10 @@
 #ifndef __MAIN_H
 #define __MAIN_H
 
+#ifdef __cplusplus
+ extern "C" {
+#endif
+
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f7xx_hal.h"
 #include "usbd_core.h"
@@ -61,6 +65,11 @@
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 void Toggle_Leds(void);
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif /* __MAIN_H */
 

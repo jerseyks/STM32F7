@@ -11,7 +11,7 @@ set(CMAKE_SYSTEM_PROCESSOR arm)
 set(CMAKE_CROSSCOMPILING TRUE)          
 #####################################################################################################################################
 set(CMAKE_C_COMPILER "arm-none-eabi-gcc")
-set(CMAKE_CXX_COMPILER "arm-none-eabi-c++")
+set(CMAKE_CXX_COMPILER "arm-none-eabi-gcc")
 set(CMAKE_STRIP "arm-none-eabi-strip")
 set(CMAKE_ASM_COMPILER "arm-none-eabi-gcc")
 #####################################################################################################################################
@@ -34,7 +34,7 @@ set(CODE_OPTION "-Os -ffunction-sections -fdata-sections -g")
 #message(S_OBJECT_OPTION=${S_OBJECT_OPTION})
 set(C_OBJECT_OPTION "${ARCH_OPTION} ${CODE_OPTION}")
 message(C_OBJECT_OPTION=${C_OBJECT_OPTION})
-set(LINK_OPTION "${ARCH_OPTION} ${CODE_OPTION} -Wl,--gc-sections --specs=nosys.specs -Wl,-Map=map.map")
+set(LINK_OPTION "${ARCH_OPTION} ${CODE_OPTION} -Wl,--gc-sections --specs=nosys.specs -Wl,-Map=${CMAKE_PROJECT_NAME}.map")
 message(LINK_OPTION=${LINK_OPTION})
 #####################################################################################################################################
 #c/c++编译选项_设置-----------编译

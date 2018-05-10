@@ -20,7 +20,7 @@ typedef enum
 
 }STM32_LED_TypeDef;
 
-
+#define ledn                             ((uint8_t)3)
 
 
 #define STM32_LED1_GPIO_PORT                   GPIOB

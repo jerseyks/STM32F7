@@ -85,7 +85,7 @@ class Led
             }
 
         };
-        void STM32_LED_Toggle(void)
+        void STM32_LED_Toggle(STM32_LED_TypeDef led)
         {
             GPIO_TypeDef*     gpio_led;
 

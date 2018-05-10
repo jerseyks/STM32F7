@@ -97,8 +97,8 @@ int main(void)
   SystemClock_Config();
     
   /* Configure LED1 and LED3 */
-  BSP_LED_Init(LED1);
-  BSP_LED_Init(LED3);
+  // BSP_LED_Init(LED1);
+  // BSP_LED_Init(LED3);
   
   /* Init Device Library */
   USBD_Init(&USBD_Device, &VCP_Desc, 0);
@@ -120,7 +120,7 @@ int main(void)
   while (1)
   {
     // TASK_LED(rxbuff[0]-48);
-    Toggle_Leds();
+    // Toggle_Leds();
     // HAL_UART_TxCpltCallback(&UartHandle);
     // HAL_UART_RxCpltCallback(&UartHandle);
 

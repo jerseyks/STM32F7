@@ -53,7 +53,7 @@
 USBD_HandleTypeDef USBD_Device;
 extern UART_HandleTypeDef UartHandle;
 
-void TASK_LED(uint8_t i);
+// void TASK_LED(uint8_t i);
 
 uint8_t rxbuff[128];
 uint8_t txbuff[128];
@@ -263,33 +263,33 @@ static void CPU_CACHE_Enable(void)
   * @param  None
   * @retval None
   */
-void Toggle_Leds(void)
-{
+// void Toggle_Leds(void)
+// {
 
-    BSP_LED_Toggle(LED1);
-    BSP_LED_Toggle(LED3);
+//     BSP_LED_Toggle(LED1);
+//     BSP_LED_Toggle(LED3);
 
   
-}
+// }
 
-void TASK_LED(uint8_t i)
-{
-  switch (i)
-  {
-    case 0:
-              BSP_LED_On(LED1);
-              BSP_LED_On(LED3);
-            break;
-    case 1:
-              BSP_LED_Off(LED1);
-              BSP_LED_Off(LED3);
-            break;
-    case 2:
-              BSP_LED_Toggle(LED1);
-              BSP_LED_Toggle(LED3);
-            break;
-  }
-}
+// void TASK_LED(uint8_t i)
+// {
+//   switch (i)
+//   {
+//     case 0:
+//               BSP_LED_On(LED1);
+//               BSP_LED_On(LED3);
+//             break;
+//     case 1:
+//               BSP_LED_Off(LED1);
+//               BSP_LED_Off(LED3);
+//             break;
+//     case 2:
+//               BSP_LED_Toggle(LED1);
+//               BSP_LED_Toggle(LED3);
+//             break;
+//   }
+// }
 
 #ifdef  USE_FULL_ASSERT
 /**

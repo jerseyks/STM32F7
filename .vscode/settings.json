@@ -3,6 +3,8 @@
         "stm32f7xx_hal.h": "c",
         "stm32f7xx_hal_conf.h": "c",
         "main.h": "c",
-        "stm32756g_eval.h": "c"
+        "stm32756g_eval.h": "c",
+        "usbd_cdc_interface.h": "c",
+        "stm32f7xx_it.h": "c"
     }
 }

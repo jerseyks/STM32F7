@@ -57,15 +57,15 @@
 #include "usbd_desc.h"
 #include "usbd_cdc.h"
 #include "usbd_cdc_interface.h"
-#include "led.h"
-#include "stm32756g_eval.h"
+// #include "led.h"
+// #include "stm32756g_eval.h"
 
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
-void Toggle_Leds(void);
+// void Toggle_Leds(void);
 
 #ifdef __cplusplus
 }

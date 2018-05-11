@@ -16,7 +16,7 @@ set(CMAKE_CXX_COMPILER "arm-none-eabi-g++")
 set(CMAKE_STRIP "arm-none-eabi-strip")
 set(CMAKE_ASM_COMPILER "arm-none-eabi-gcc")
 #####################################################################################################################################
-#抑制_CMake_用动态链接来编译、链接
+#Suppress _CMake_ to compile and link with dynamic link
 set(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "")
 set(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS "")
 #####################################################################################################################################
@@ -38,10 +38,10 @@ message(C_OBJECT_OPTION=${C_OBJECT_OPTION})
 set(LINK_OPTION "${ARCH_OPTION} ${CODE_OPTION} -Wl,--gc-sections --specs=nosys.specs -Wl,-Map=${CMAKE_PROJECT_NAME}.map")
 message(LINK_OPTION=${LINK_OPTION})
 #####################################################################################################################################
-#c/c++编译选项_设置-----------编译
+#c/c++Compilation Options_Settings ----- Compile
 set(CMAKE_C_FLAGS "${C_OBJECT_OPTION}") 
 set(CMAKE_CXX_FLAGS "${C_OBJECT_OPTION}")
-#c/c++链接选项_设置-----------链接
+#c/c++Link Options _ Settings ----------- Links
 set(CMAKE_EXE_LINKER_FLAGS "${LINK_OPTION} -T${LINK_NAME_PATH}") 
 #####################################################################################################################################
 #header_files
@@ -60,7 +60,10 @@ aux_source_directory(STM32_USB_Device_Library/Core/Src STM32_USB_Device_Library_
 aux_source_directory(STM32_USB_Device_Library/Class/CDC/Src STM32_USB_Device_Library_Class_CDC_src)
 aux_source_directory(User/Src User_src)
 aux_source_directory(User/Src/device/Src User_Src_device_Src)
+#####################################################################################################################################
+#add_static_library
 
+#####################################################################################################################################
 #merge_all_source_files
 set(USER    ${STM32F7xx_HAL_Driver_src}
             ${STM32_USB_Device_Library_Core_src}

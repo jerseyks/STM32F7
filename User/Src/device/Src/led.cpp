@@ -1,4 +1,6 @@
-#include "led.h"
+#ifdef __cplusplus
+    #include "led.h"
+#endif
 
 
 

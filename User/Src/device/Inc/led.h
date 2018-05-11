@@ -148,7 +148,7 @@ class Led
 };
 
 
-class Led deng1;
+extern class Led deng1;
 
 #endif
 

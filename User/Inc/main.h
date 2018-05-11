@@ -57,7 +57,9 @@
 #include "usbd_desc.h"
 #include "usbd_cdc.h"
 #include "usbd_cdc_interface.h"
-#include "led.h"
+#ifdef __cplusplus
+  #include "led.h"
+#endif
 // #include "stm32756g_eval.h"
 
 

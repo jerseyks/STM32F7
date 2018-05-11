@@ -46,6 +46,7 @@ set(CMAKE_EXE_LINKER_FLAGS "${LINK_OPTION} -T${LINK_NAME_PATH}")
 #####################################################################################################################################
 #header_files
 include_directories(User/Inc
+                    User/Src/device/Inc
                     STM32F7xx_HAL_Driver/Inc
                     CMSIS/Device/ST/STM32F7xx/Include
                     CMSIS/Include
@@ -58,12 +59,14 @@ aux_source_directory(STM32F7xx_HAL_Driver/Src STM32F7xx_HAL_Driver_src)
 aux_source_directory(STM32_USB_Device_Library/Core/Src STM32_USB_Device_Library_Core_src)
 aux_source_directory(STM32_USB_Device_Library/Class/CDC/Src STM32_USB_Device_Library_Class_CDC_src)
 aux_source_directory(User/Src User_src)
+aux_source_directory(User/Src/device/Src User_Src_device_Src)
 
 #merge_all_source_files
 set(USER    ${STM32F7xx_HAL_Driver_src}
             ${STM32_USB_Device_Library_Core_src}
             ${STM32_USB_Device_Library_Class_CDC_src}
             ${User_src}
+            ${User_Src_device_Src}
         )
 #####################################################################################################################################
 #exe_lists

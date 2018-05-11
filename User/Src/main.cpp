@@ -53,7 +53,7 @@
 USBD_HandleTypeDef USBD_Device;
 extern UART_HandleTypeDef UartHandle;
 
-void TASK_LED(uint8_t i);
+// void TASK_LED(uint8_t i);
 
 uint8_t rxbuff[128];
 uint8_t txbuff[128];
@@ -97,8 +97,9 @@ int main(void)
   SystemClock_Config();
     
   /* Configure LED1 and LED3 */
-  BSP_LED_Init(LED1);
-  BSP_LED_Init(LED3);
+  // BSP_LED_Init(LED1);
+  // BSP_LED_Init(LED3);
+  deng1.STM32_LED_Init(STM32_LED1);
   
   /* Init Device Library */
   USBD_Init(&USBD_Device, &VCP_Desc, 0);
@@ -120,9 +121,10 @@ int main(void)
   while (1)
   {
     // TASK_LED(rxbuff[0]-48);
-    Toggle_Leds();
+    // Toggle_Leds();
     // HAL_UART_TxCpltCallback(&UartHandle);
     // HAL_UART_RxCpltCallback(&UartHandle);
+    deng1.STM32_LED_Toggle(STM32_LED1);
 
     // Sendbuff(txbuff,sizeof(txbuff)-1);
     HAL_Delay(100);
@@ -263,33 +265,33 @@ static void CPU_CACHE_Enable(void)
   * @param  None
   * @retval None
   */
-void Toggle_Leds(void)
-{
+// void Toggle_Leds(void)
+// {
 
-    BSP_LED_Toggle(LED1);
-    BSP_LED_Toggle(LED3);
+//     BSP_LED_Toggle(LED1);
+//     BSP_LED_Toggle(LED3);
 
   
-}
+// }
 
-void TASK_LED(uint8_t i)
-{
-  switch (i)
-  {
-    case 0:
-              BSP_LED_On(LED1);
-              BSP_LED_On(LED3);
-            break;
-    case 1:
-              BSP_LED_Off(LED1);
-              BSP_LED_Off(LED3);
-            break;
-    case 2:
-              BSP_LED_Toggle(LED1);
-              BSP_LED_Toggle(LED3);
-            break;
-  }
-}
+// void TASK_LED(uint8_t i)
+// {
+//   switch (i)
+//   {
+//     case 0:
+//               BSP_LED_On(LED1);
+//               BSP_LED_On(LED3);
+//             break;
+//     case 1:
+//               BSP_LED_Off(LED1);
+//               BSP_LED_Off(LED3);
+//             break;
+//     case 2:
+//               BSP_LED_Toggle(LED1);
+//               BSP_LED_Toggle(LED3);
+//             break;
+//   }
+// }
 
 #ifdef  USE_FULL_ASSERT
 /**

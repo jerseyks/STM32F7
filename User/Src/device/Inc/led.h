@@ -1,10 +1,6 @@
 #ifndef __LED_H
 #define __LED_H
 
-#ifdef __cplusplus
- extern "C" {
-#endif
-
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f7xx_hal.h"
 
@@ -38,7 +34,7 @@ typedef enum
 
 const uint32_t STM32_GPIO_PIN[ledn] = {STM32_LED1_PIN,STM32_LED2_PIN,STM32_LED3_PIN};
 
-#ifdef __cplusplus
+
 class Led
 {
     public:
@@ -149,12 +145,5 @@ class Led
 
 
 extern class Led deng1;
-
-#endif
-
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif/*__LED_H*/

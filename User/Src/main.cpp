@@ -100,6 +100,7 @@ int main(void)
   // BSP_LED_Init(LED1);
   // BSP_LED_Init(LED3);
   deng1.STM32_LED_Init(STM32_LED1);
+  deng1.STM32_LED_Init(STM32_LED2);
   
   /* Init Device Library */
   USBD_Init(&USBD_Device, &VCP_Desc, 0);
@@ -125,6 +126,7 @@ int main(void)
     // HAL_UART_TxCpltCallback(&UartHandle);
     // HAL_UART_RxCpltCallback(&UartHandle);
     deng1.STM32_LED_Toggle(STM32_LED1);
+    deng1.STM32_LED_Toggle(STM32_LED2);
 
     // Sendbuff(txbuff,sizeof(txbuff)-1);
     HAL_Delay(100);

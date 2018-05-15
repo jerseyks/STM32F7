@@ -1,6 +1,7 @@
 all:
 	mkdir -p Build
-# 前一行命令导致环境的变化在下一行会被reset,所以,一行命令启动一个sub shell ,所以,这么写cd /tmp && you-operation-cmds
+# Front line command causes the changes in the environment on the next line will be reset, so the command line to start a sub shell, so, so write
+# cd /tmp && you-operation-cmds
 	cd Build && cmake ..
 	cd Build && make -j
 	cd Build && cmake ..

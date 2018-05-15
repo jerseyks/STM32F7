@@ -63,6 +63,8 @@ aux_source_directory(User/Src/device/Src User_Src_device_Src)
 #####################################################################################################################################
 #add_static_library
 add_library(HAL_static STATIC ${STM32F7xx_HAL_Driver_src})
+add_library(USB_Core STATIC ${STM32_USB_Device_Library_Core_src})
+add_library(USB_Class_CDC STATIC ${STM32_USB_Device_Library_Class_CDC_src})
 #####################################################################################################################################
 #merge_all_source_files
 set(USER    ${STM32F7xx_HAL_Driver_src}
@@ -83,7 +85,10 @@ set(USER    ${STM32F7xx_HAL_Driver_src}
 add_executable(STM32CMAKE ${USER} ${START_NAME_PATH}) 
 ##################################################################################################################################### 
 #link_static_library_to_target
-target_link_libraries(STM32CMAKE HAL_static)
+target_link_libraries(STM32CMAKE HAL_static 
+                                USB_Core
+                                USB_Class_CDC
+)
 #####################################################################################################################################
 #cmake _shell 
 execute_process(COMMAND  arm-none-eabi-objcopy -O binary ${CMAKE_PROJECT_NAME} ${CMAKE_PROJECT_NAME}.bin)   

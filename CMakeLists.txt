@@ -85,6 +85,9 @@ add_executable(STM32CMAKE ${USER} ${START_NAME_PATH})
 #cmake _shell 
 execute_process(COMMAND  arm-none-eabi-objcopy -O binary ${CMAKE_PROJECT_NAME} ${CMAKE_PROJECT_NAME}.bin)   
 #####################################################################################################################################
+#link_static_library_to_target
+
+#####################################################################################################################################
 #set(CMAKE_ASM_FLAGS  ${S_OBJECT_OPTION} ${START_NAME_PATH} -o Startup.o)
 #set(CMAKE_C_FLAGS ${C_OBJECT_OPTION} ${STM32F7xx_HAL_Driver_src} ${STM32_USB_Device_Library_Core_src} ${STM32_USB_Device_Library_Class_CDC_src} ${User_src} ${CDEFINE})
 #set(CMAKE_C_FLAGS ${LINK_OPTION} ${CDEFINE} -T${LINK_NAME_PATH} ${BUILD_PATH}*.o -o ${TARGET_NAME}.elf)
